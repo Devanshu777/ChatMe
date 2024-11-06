@@ -1,8 +1,8 @@
 package com.example.chatme.feature.home
 
-import androidx.compose.runtime.Composable
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-@Composable
-fun HomeViewModel(){
+@HiltViewModel
+class HomeViewModel {
 
 }
