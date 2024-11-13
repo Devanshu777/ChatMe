@@ -3,6 +3,7 @@ package com.example.chatme.feature.home
 import androidx.lifecycle.ViewModel
 import com.example.chatme.model.Channel
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -19,6 +20,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     val channel = _channels.asStateFlow()
 
     private val firebaseDatabase = Firebase.database
+    val firebaseAuth = FirebaseAuth.getInstance()
 
     init {
         // Listen for real-time changes in the "channel" node
@@ -42,5 +44,9 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         val key = firebaseDatabase.getReference("channel").push().key
         firebaseDatabase.getReference("channel").child(key!!).setValue(name)
         // No need to call getChannels() here, as the ValueEventListener will handle updates
+    }
+
+    fun signOut() {
+        firebaseAuth.signOut()
     }
 }

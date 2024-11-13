@@ -79,13 +79,15 @@ fun HomeScreen(navController: NavController) {
         ) {
             LazyColumn {
                 item {
+                    Row {
                     Text(
                         text = "ChatMe",
                         color = Color.Black,
                         style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Black),
                         modifier = Modifier.padding(16.dp)
                     )
-                }
+                    Button(onClick = { viewModel.signOut().also { navController.popBackStack("login", inclusive = false) } }, modifier = Modifier) { Text(text = "Sign Out")}
+                }}
 
                 item {
                     TextField(value = "",

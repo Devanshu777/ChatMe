@@ -2,9 +2,11 @@ package com.example.chatme.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.chatme.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -31,4 +33,12 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+val redHatFontFamily = FontFamily(
+    Font(R.font.redhat_bold, FontWeight.Bold),
+    Font(R.font.redhat_black, FontWeight.Black),
+    Font(R.font.redhat_regular, FontWeight.Normal),
+    Font(R.font.redhat_extra_bold, FontWeight.ExtraBold),
+    Font(R.font.redhat_black_italic, FontWeight.Black),
+    Font(R.font.redhat_bold_italic, FontWeight.Bold),
 )
