@@ -1,5 +1,6 @@
 package com.example.chatme.feature.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -20,6 +21,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -35,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +45,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import com.example.chatme.R
+import com.example.chatme.ui.theme.redHatFontFamily
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,6 +70,7 @@ fun HomeScreen(navController: NavController) {
                 }) {
                 Text(
                     text = "+ New Chat",
+                    fontFamily = redHatFontFamily,
                     modifier = Modifier
                         .padding(16.dp, 8.dp),
                     color = Color.White
@@ -80,19 +86,29 @@ fun HomeScreen(navController: NavController) {
             LazyColumn {
                 item {
                     Row {
-                    Text(
-                        text = "ChatMe",
-                        color = Color.Black,
-                        style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Black),
-                        modifier = Modifier.padding(16.dp)
-                    )
-                    Button(onClick = { viewModel.signOut().also { navController.popBackStack("login", inclusive = false) } }, modifier = Modifier) { Text(text = "Sign Out")}
-                }}
+                        Text(
+                            text = "ChatMe",
+                            fontFamily = redHatFontFamily,
+                            color = Color.Black,
+                            style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Black),
+                            modifier = Modifier.padding(16.dp)
+                        )
+                        Spacer(Modifier.weight(1f))
+
+                        IconButton(onClick = {
+                            viewModel.signOut(); navController.navigate("sign out") {
+                            popUpTo(0) { inclusive = true }
+                        }
+                        }){
+                            Image(painter = painterResource(id = R.drawable.logout), contentDescription = "exit")
+                        }
+                    }
+                }
 
                 item {
                     TextField(value = "",
                         onValueChange = {},
-                        placeholder = { Text(text = "Search...") },
+                        placeholder = { Text(text = "Search...", fontFamily = redHatFontFamily) },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -150,7 +166,7 @@ fun ChannelItem(channelName: String, onClick: () -> Unit) {
                 onClick()
             },
 
-    ) {
+        ) {
         Row(
             modifier = Modifier
                 .align(Alignment.CenterStart),
@@ -166,6 +182,7 @@ fun ChannelItem(channelName: String, onClick: () -> Unit) {
             ) {
                 Text(
                     text = channelName[0].uppercase(),
+                    fontFamily = redHatFontFamily,
                     color = Color.White,
                     style = TextStyle(fontSize = 35.sp),
                     textAlign = TextAlign.Center,
@@ -174,7 +191,7 @@ fun ChannelItem(channelName: String, onClick: () -> Unit) {
             }
 
 
-            Text(text = channelName, modifier = Modifier.padding(8.dp), color = Color.Black)
+            Text(text = channelName, modifier = Modifier.padding(8.dp), color = Color.Black, fontFamily = redHatFontFamily)
         }
     }
 }
@@ -189,7 +206,7 @@ fun AddChannelDialog(onAddChannel: (String) -> Unit) {
         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "+ New Chat")
+        Text(text = "+ New Chat",fontFamily = redHatFontFamily)
 
         Spacer(modifier = Modifier.padding(8.dp))
 
@@ -217,7 +234,7 @@ fun AddChannelDialog(onAddChannel: (String) -> Unit) {
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Add")
+            Text(text = "Add",fontFamily = redHatFontFamily)
         }
 
     }

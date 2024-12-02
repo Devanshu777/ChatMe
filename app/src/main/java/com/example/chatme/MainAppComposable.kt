@@ -29,6 +29,9 @@ fun MainApp() {
             composable("signup") {
                 SignUpScreen(navController)
             }
+            composable("sign out") {
+                SignInScreen(navController)
+            }
             composable("home") {
                 HomeScreen(navController)
             }
