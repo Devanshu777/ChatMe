@@ -128,7 +128,7 @@ fun ChatMessages(
                 ChatBubble(message = messages[message])
             }
         }
-        LaunchedEffect(messages) {                      //this is to scroll to new chat
+        LaunchedEffect(messages) {            //this is to scroll to new chat
             if (messages.isNotEmpty()) {
                 listState.animateScrollToItem(messages.lastIndex)
             }
