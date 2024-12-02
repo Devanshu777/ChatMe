@@ -45,7 +45,7 @@ import com.example.chatme.R
 
 @Composable
 fun ChatScreen(navController: NavController, channelId: String) {
-    // UI for the chat screen
+    
     Scaffold {
         Column(
             modifier = Modifier
