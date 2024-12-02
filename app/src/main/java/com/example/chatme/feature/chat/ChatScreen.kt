@@ -64,7 +64,7 @@ fun ChatScreen(navController: NavController, channelId: String) {
             CenterAlignedTopAppBar(
                 title = { Text(text = "ChatMe", fontSize = 26.sp, fontFamily = redHatFontFamily, fontWeight = FontWeight.ExtraBold)},
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color.White  // or any color you prefer
+                    containerColor = Color.White
                 ),
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
